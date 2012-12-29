@@ -1,0 +1,6 @@
+#/etc/fstab
+/dev/gdrom0a /	cd9660	ro					0	0
+tmpfs	/etc	tmpfs	rw,union,-s=1M				0	0
+tmpfs	/root	tmpfs	rw,union,-s=4M				0	0
+tmpfs	/var	tmpfs	rw,-s=4M				0	0
+tmpfs	/tmp	tmpfs	rw,nodev,noexec,nosuid,-s=1M		0	0

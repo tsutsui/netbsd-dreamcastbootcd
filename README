@@ -1,0 +1,20 @@
+A dumb Makefile that documents/advertises "we can create it"
+(root on gdrom0a version)
+
+0) Internet connection is required to get necessary files.
+1) Prepare and install cdrtools-2.* binaries (mkisofs and cdrecord)
+   via pkgsrc etc.  (3.x might work but not confirmed)
+   The following (standard) commands are also required:
+   cat, cc, cp, dd, ftp, gzip, mkdir, mv, pax, rm, sh, tar, touch
+2) % su root
+3) Extract dreamcastbootcd archive (use -p to get proper owner/group):
+   # tar -zxpf dreamcastbootcd-20101010.tar.gz
+4) # cd dreamcastbootcd
+5) If ftp(1) command in your OS doesn't support "ftp URL" format,
+   you could use wget(1) or tnftp(1) in pkgsrc etc.
+   In that case you have to modify ${FTP} variable in Makefile accordingly.
+6) Put blank CD-R media into your CD-R/DVD-R drive and just type "make"
+7) Enjoy!
+
+Note type "gdrom0" on "root device:" prompt, and just type enter
+on other prompts (dump device, file system, init path).

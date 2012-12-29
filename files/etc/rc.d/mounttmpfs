@@ -1,0 +1,28 @@
+#!/bin/sh
+#
+# $NetBSD: mountcritlocal,v 1.7 2002/04/29 12:29:53 lukem Exp $
+#
+
+# PROVIDE: mounttmpfs
+# REQUIRE: root
+# BEFORE:  mountcritlocal
+
+. /etc/rc.subr
+
+name="mounttmpfs"
+start_cmd="mounttmpfs_start"
+stop_cmd=":"
+
+mounttmpfs_start()
+{
+	PWD=`/bin/pwd`
+
+	mount -a -t tmpfs > /dev/null 2>&1
+	echo "Copying /altvar -> /var"
+	(cd /altvar && /bin/pax -rw -pe * /var)
+
+	cd $PWD
+}
+
+load_rc_config $name
+run_rc_command "$1"
